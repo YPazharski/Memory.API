@@ -8,19 +8,26 @@ namespace Memory.API
 {
     public class APIObject : IDisposable
     {
-        public APIObject(int number) 
+        int Id { get; }
+        bool IsDisposed { get; set; }
+        public APIObject(int id) 
         {
-            throw new NotImplementedException();
+            Id = id;
+            MagicAPI.Allocate(Id);
         }
 
         ~APIObject() 
         {
-            throw new NotImplementedException();
+            Dispose();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            if (!IsDisposed)
+            {
+                MagicAPI.Free(Id);
+                IsDisposed = true;
+            }
         }
     }
 }
