@@ -30,8 +30,5 @@ namespace Memory.API
 		{
 			return allocated.Contains(id);
 		}
-
-
-
 	}
 }
